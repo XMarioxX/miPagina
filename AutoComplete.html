@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="autoComplete.js" defer></script>
+</head>
+
+<body class="flex justify-center h-screen bg-black">
+    <div class="w-1/2 text-white">
+
+        <h1 class="text-4xl font-bold">Autocomplete</h1>
+        <p class="mt-4"> An autocomplete combines a text input with a listbox, allowing users to filter a list of options to items matching a query. </p>
+        <br>
+
+        <div>
+            <a href target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center px-4 py-1 bg-[#18181B] text-white rounded-xl hover:bg-[#151518] mx-1 my-1">
+            <img src="https://img.icons8.com/?size=256&id=5YDtlBFCcJag&format=png"
+                alt="Favicon" class="w-6 h-6 mr-2">
+            Storybook
+            </a>
+
+            <a href target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center px-4 py-1 bg-[#18181B] text-white rounded-xl hover:bg-[#151518] mx-1 my-1">
+            <img src="https://img.icons8.com/?size=256&id=24895&format=png"
+                alt="Favicon" class="w-6 h-6 mr-2">
+            @nextui-org/dropdown
+            </a>
+
+            <a href target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center px-4 py-1 bg-[#18181B] text-white rounded-xl hover:bg-[#151518] mx-1 my-1">
+            <img src="https://img.icons8.com/?size=256&id=gav46YArUSy1&format=png"
+                alt="Favicon" class="w-6 h-6 mr-2">
+            React Aria
+            </a>
+
+            <a href target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center px-4 py-1 bg-[#18181B] text-white rounded-xl hover:bg-[#151518] mx-1 my-1">
+            <ion-icon name="logo-github" class="mr-2"></ion-icon> Source
+            </a>
+
+            <a href
+            target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center px-4 py-1 bg-[#18181B] text-white rounded-xl hover:bg-[#151518] mx-1 my-1">
+            <ion-icon name="logo-github" class="mr-2"></ion-icon> Styles Source
+            </a>
+        </div>
+
+        <hr class="bg-[#3F3F46] my-5">
+
+        <div class="bg-[#0C0C0D] w-full h-40 rounded-lg my-5"></div>
+
+        <h2 class="text-4xl font-bold pt-8 pb-8">Import</h2>
+
+        <div class="mb-10">
+            <p class="mb-2 text-lg">NextUI exports 3 autocomplete-related components:</p>
+            <p class="mb-2 text-lg">
+                <strong class="text-blue-300">
+                    • Autocomplete
+                </strong> 
+                : The main component, which is a wrapper for the other components.
+            </p>
+            <p class="mb-2 text-lg">
+                <strong class="text-blue-300">
+                    • AutocompleteSection
+                </strong>
+                : The component that contains a group of autocomplete items.
+            </p>
+            <p class="mb-2 text-lg">
+                <strong class="text-blue-300">
+                    • AutocompleteItem
+                </strong>
+                : The component that represents a autocomplete item.
+            </p>
+        </div>
+
+        <div>
+            <a  id="mainButton"
+            class="inline-flex items-center px-4 py-2 bg-transparent text-white rounded hover:bg-gray-800 mx-2 my-1 border-white border-b-4 border-white  ">
+                Main
+            </a>
+
+            <a  id="individualButton"
+            class="inline-flex items-center px-4 py-2 bg-transparent text-white rounded hover:bg-gray-800 mx-2 my-1 border-white">
+                Individual
+            </a>
+
+            <div>
+                <div class="flex items-center w-full mt-5">
+                    <div id="textContainer" class="bg-[#0E0C0C] p-2 flex-grow pr-56">
+                        <span class="text-[#C678DD]">import</span> { <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;Autocomplete, <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;AutocompleteSection, <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;AutocompleteItem <br>
+                        } <span class="text-[#C678DD]">from</span> 
+                        <span class="text-[#98C379]">"@nextui-org/react";</span> 
+                    </div>
+
+                    <div id="textContainer2" class="bg-[#0E0C0C] p-2 flex-grow pr-56 hidden">
+                        <span class="text-[#C678DD]">import</span> { <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;Autocomplete, <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;AutocompleteSection, <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;AutocompleteItem <br>
+                        } <span class="text-[#C678DD]">from</span> 
+                        <span class="text-[#98C379]">"@nextui-org/autocomplete";</span> 
+                    </div>
+
+                    <button id="copyButton" class="px-4 py-14 bg-[#0E0C0C] text-white hover:bg-[#212023] h-full">
+                    <ion-icon name="copy-outline" class="w-3 "></ion-icon>
+                    </button>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class=" USAGESS mb-32 pb-32">
+            <h2 class="text-4xl font-bold pt-8 pb-8">Usage</h2>
+
+            <div>
+                <a id="previewButton" onclick="mostrarPreview()"
+                class="inline-flex items-center px-4 py-2 bg-transparent text-white rounded hover:bg-gray-800 mx-2 my-1 border-white  focus:border-b-4 border-b-4">
+                Preview
+                </a>
+
+                <a id="codeButton" onclick="mostrarCode()"
+                class="inline-flex items-center px-4 py-2 bg-transparent text-white rounded hover:bg-gray-800 mx-2 my-1 border-white focus:border-b-4">
+                Code
+                </a>
+
+            </div>
+
+            <div id="previewDiv" class=" flex border border-gray-900 w-full h-25 rounded-lg mt-4">
+
+                <!-- Componente -->
+                <div class="relative w-full p-5">
+                    <input id="animalInput1" class="animal-input w-full rounded-xl p-4 pl-4 pt-5 pr-10 bg-[#27272A] focus:outline-none focus:hover:bg-[#27272A] hover:bg-[#3F3F46]" placeholder="Select an animal">
+                    <ul id="animalList1" class="absolute rounded-xl z-10 w-full bg-[#27272A]  mt-1 hidden">
+                        <!-- Lista de animales -->
+                        <li class="p-2 hover:bg-[#3F3F46] cursor-pointer">Dog</li>
+                        <li class="p-2 hover:bg-[#3F3F46] cursor-pointer">Cat</li>
+                        <li class="p-2 hover:bg-[#3F3F46] cursor-pointer">Rabbit</li>
+                        <li class="p-2 hover:bg-[#3F3F46] cursor-pointer">Bird</li>
+                        <li class="p-2 hover:bg-[#3F3F46] cursor-pointer">Fish</li>
+                    </ul>
+                </div>
+            
+                <div class="relative w-full p-5">
+                    <div id="placeholderAnimals" class="text-xs absolute top-3 left-5 pl-4 pt-3 text-white transition-all">Favorite animal</div>
+                    <input id="animalInput2" class="animal-input w-full rounded-xl p-4 pl-4 pt-5 pr-10 bg-[#27272A] focus:outline-none focus:hover:bg-[#27272A] hover:bg-[#3F3F46]" placeholder="Select an animal">
+                    <ul id="animalList2" class="absolute rounded-xl z-10 w-full bg-[#27272A] mt-1 hidden">
+                        <!-- Lista de animales -->
+                        <li class="p-2 hover:bg-[#3F3F46] cursor-pointer">Dog</li>
+                        <li class="p-2 hover:bg-[#3F3F46] cursor-pointer">Cat</li>
+                        <li class="p-2 hover:bg-[#3F3F46] cursor-pointer">Rabbit</li>
+                        <li class="p-2 hover:bg-[#3F3F46] cursor-pointer">Bird</li>
+                        <li class="p-2 hover:bg-[#3F3F46] cursor-pointer">Fish</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="codeDiv"
+            class="relative bg-[#0E0C0C] border border-gray-900 w-full h-25 rounded-lg mt-4 hidden">
+                <div id="3Botones" class="flex justify-end hidden ">
+                    <button
+                    class="px-4 py-3.5 bg-[#0E0C0C] text-white hover:bg-[#212023]">
+                    <a
+                        target="_blank" class="boton">
+                        <ion-icon name="bug-outline"></ion-icon>
+                    </a>
+                    </button>
+
+                    <button id="botonCopiar3" class="px-4 py-3.5 bg-[#0E0C0C] text-white hover:bg-[#212023]"
+                    onclick="copyToClipboard2()">
+                    <ion-icon name="copy-outline"></ion-icon>
+                    </button>
+
+                    <button
+                    class="px-4 py-3.5 bg-[#0E0C0C] text-white hover:bg-[#212023]">
+                    <a
+                        target="_blank" class="boton">
+                        <img
+                        src="https://ngryman.gallerycdn.vsassets.io/extensions/ngryman/codesandbox-theme/2.0.0/1634657178484/Microsoft.VisualStudio.Services.Icons.Default"
+                        alt="Favicon" class="w-3 h-3">
+                    </a>
+                    </button>
+                </div>
+
+                <div id="divTrans"
+                    class="absolute top-0 left-0 w-full h-full bg-black opacity-50 flex justify-center items-center">
+
+                    <button onclick="mostrarMas()"
+                    class="px-4 py-2 bg-white text-black font-bold rounded-lg outline-none focus:outline-none">Show
+                    more</button>
+                </div>
+                <div
+                    class="flex flex-col justify-center items-center overflow-hidden h-56 "
+                    id="tecsto">
+                    <div id="textContainer3" class="bg-[#0E0C0C] w-full h-full flex-grow pl-20 overflow-auto">
+                        <span class="text-[#C678DD]">import</span> React 
+                        <span class="text-[#C678DD]">from</span> 
+                        <span class="text-[#98C379]">"react"</span>;<br>
+
+                        <span class="text-[#C678DD]">import</span> {Autocomplete, AutocompleteItem}  
+                        <span class="text-[#C678DD]">from</span> 
+                        <span class="text-[#98C379]">"@nextui-org/react"</span>;<br>
+                        
+                        <span class="text-[#C678DD]">import</span> {animals} 
+                        <span class="text-[#C678DD]">from</span> 
+                        <span class="text-[#98C379]">"./data"</span>;<br><br>
+                    
+                        
+                        <span class="text-[#C678DD]">export default function</span> 
+                        <span class="text-[#5496CC]">App</span>() {<br>
+                        
+                        &nbsp;&nbsp;
+                        <span class="text-[#C678DD]">return </span>(<br>
+                        
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <<span class="text-[#BB9D65]">Autocomplete</span><br>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="text-[#87A7C6]">label </span>="
+                        <span class="text-[#98C379]">Autocomplete</span>"<br>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="text-[#87A7C6]">placeholder </span>="
+                        <span class="text-[#98C379]">Search an animal</span>"<br>    
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="text-[#87A7C6]">defaultItems </span>{
+                        <span class="text-[#5496CC]">animals</span>}<br>  
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="text-[#87A7C6]">disabledKeys </span>={[
+                        <span class="text-[#98C379]">"zebra"</span>,
+                        <span class="text-[#98C379]">"tiger"</span>,
+                        <span class="text-[#98C379]">"lion"</span>,
+                        <span class="text-[#98C379]">"elephant"</span>,
+                        <span class="text-[#98C379]">"crocodile"</span>,
+                        <span class="text-[#98C379]">"whale"</span>]}
+                        <br>  
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="text-[#87A7C6]">className </span>="
+                        <span class="text-[#98C379]">max-w-xs</span>"<br>  
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        ><br>
+
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+                        {(item) 
+                        <span class="text-[#BB9D65]">=> </span>   
+                        <
+                        <span class="text-[#BB9D65]">AutocompleteItem </span> 
+                        <span class="text-[#BB9D65]">key</span>=
+                        {
+                        <span class="text-[#87A7C6]">item</span>.
+                        <span class="text-[#87A7C6]">value</span>}>{item.label}<br>
+                        
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span><</span><span>/</span>
+                        
+                        <span class="text-[#BB9D65]">AutocompleteItem</span>>} 
+                        
+                        </<span class="text-[#BB9D65]">Autocomplete</span>>
+                        <br>
+                        &nbsp;&nbsp;
+                        );
+                        <br>
+                        
+                        
+                        }
+                    </div>
+
+                    <button id="mostrarMenosBotton" onclick="mostrarMenos()"
+                    class="m-4 px-4 py-2 bg-white text-black font-bold rounded-lg outline-none focus:outline-none hidden">Show
+                    less</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  </body>
+
+</html>

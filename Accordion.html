@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+         body {
+            font-family: 'Inter', sans-serif;
+        }
+        .text-magenta {
+            color: #fa1be0;
+        }
+        .scrollbar {
+            overflow-y: scroll;
+            scrollbar-width: thin;
+            scrollbar-color: #a0aec0 #e2e8f0;
+        }
+        .scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .scrollbar::-webkit-scrollbar-track {
+            background: #e2e8f0;
+        }
+        .scrollbar::-webkit-scrollbar-thumb {
+            background-color: #a0aec0;
+            border-radius: 20px;
+            border: 3px solid #e2e8f0;
+        }
+        .code-preview-container {
+            position: relative;
+        }
+        .view-more-button-container {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .view-more-button {
+            background-color: rgba(255, 255, 255, 0.9);
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            border-radius: 0.375rem;
+            color: #4a5568;
+        }
+        .button-container {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .button-container button {
+            background-color: #a0aec0;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            border-radius: 999px;
+        }
+        .copy-button {
+            background-color: #a0aec0;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            border-radius: 999px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-10">
+    <div class="max-w-2xl mx-auto">
+        <h1 class="text-3xl font-bold mb-4">Accordion</h1>
+        <p class="mb-6">Accordion display a list of high-level options that can expand/collapse to reveal more information.</p>
+        <div class="flex gap-2 mb-6">
+            <a href="#" class="text-blue-600 hover:underline">Storybook</a>
+            <a href="#" class="text-blue-600 hover:underline">@nextui-org/accordion</a>
+            <a href="#" class="text-blue-600 hover:underline">Source</a>
+            <a href="#" class="text-blue-600 hover:underline">Styles source</a>
+        </div>
+        <hr class="mb-6">
+        <div class="bg-white p-14 rounded-lg shadow-md mb-6">
+            <!-- Placeholder for accordion component -->
+        </div>
+        <div class="mb-6">
+            <h2 class="text-xl font-semibold mb-2">Import</h2>
+            <p>NextUI exports 2 accordion-related components:</p>
+            <ul class="list-disc pl-6 mb-4">
+                <li><code class="text-magenta">Accordion</code>: The main component to display a list of accordion items.</li>
+                <li><code class="text-magenta">AccordionItem</code>: The item component to display a single accordion item.</li>
+            </ul>
+            <div class="flex gap-2 mb-4">
+                <button id="mainButton" class="text-gray-500 font-bold py-2 px-4 rounded">Main</button>
+                <button id="individualButton" class="text-gray-500 font-bold py-2 px-4 rounded">Individual</button>
+            </div>
+            <div id="importText" class="bg-gray-200 p-4 rounded relative">
+                <p class="font-mono text-sm">import {'{'} <span class="text-magenta">Accordion</span>, <span class="text-magenta">AccordionItem</span> {'}'} from "@nextui-org/react";</p>
+                <button class="copy-button absolute right-4 top-4 text-gray-500" data-clipboard-text='import { Accordion, AccordionItem } from "@nextui-org/react";'>
+                    <i class="far fa-copy"></i>
+                </button>
+            </div>
+            <div id="individualImportText" class="hidden bg-gray-200 p-4 rounded relative">
+                <p class="font-mono text-sm">import {'{'} <span class="text-magenta">Accordion</span>, <span class="text-magenta">AccordionItem</span> {'}'} from "@nextui-org/accordion";</p>
+                <button class="copy-button absolute right-4 top-4 text-gray-500" data-clipboard-text='import { Accordion, AccordionItem } from "@nextui-org/accordion";'>
+                    <i class="far fa-copy"></i>
+                </button>
+            </div>
+        </div>
+
+        <div>
+            <h2 class="text-xl font-semibold mb-2">Usage</h2>
+            <div class="flex gap-2 mb-2">
+                <button id="previewButton" class="text-gray-500">Preview</button>
+                <button id="codeButton" class="text-gray-500">Code</button>
+            </div>
+           
+            <div id="accordionPreview" class="bg-white p-4 rounded shadow">
+                <div class="border-b">
+                    <button class="accordion-button flex justify-between items-center w-full py-2 px-4 text-left">
+                        Accordion 1
+                        <span class="text-gray-500"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="accordion-content hidden p-4">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </div>
+                </div>
+                <div class="border-b">
+                    <button class="accordion-button flex justify-between items-center w-full py-2 px-4 text-left">
+                        Accordion 2
+                        <span class="text-gray-500"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="accordion-content hidden p-4">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </div>
+                </div>
+                <div>
+                    <button class="accordion-button flex justify-between items-center w-full py-2 px-4 text-left">
+                        Accordion 3
+                        <span class="text-gray-500"><i class="fas fa-chevron-down"></i></span>
+                    </button>
+                    <div class="accordion-content hidden p-4">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    </div>
+                </div>
+            </div>
+            <div id="codePreview" class="hidden code-preview-container">
+                <div class="button-container">
+                    <button id="viewMoreButton" class="view-more-button">View More</button>
+                </div>
+                <button id="copyPasteButton" class="copy-button absolute top-4 right-4 text-gray-500">
+                    <i class="far fa-copy"></i>
+                </button>
+                <textarea id="codeTextArea" class="font-mono text-sm w-full p-2 border-none focus:ring-0 scrollbar" style="height: 5rem; overflow-y: hidden;" readonly>
+import React from "react";
+import {Accordion, AccordionItem} from "@nextui-org/react";
+
+export default function App() {
+  const defaultContent =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+
+  return (
+    <Accordion>
+      <AccordionItem key="1" aria-label="Accordion 1" title="Accordion 1">
+        {defaultContent}
+      </AccordionItem>
+      <AccordionItem key="2" aria-label="Accordion 2" title="Accordion 2">
+        {defaultContent}
+      </AccordionItem>
+      <AccordionItem key="3" aria-label="Accordion 3" title="Accordion 3">
+        {defaultContent}
+      </AccordionItem>
+    </Accordion>
+  );
+}
+                </textarea>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('mainButton').addEventListener('click', function() {
+            document.getElementById('importText').classList.remove('hidden');
+            document.getElementById('individualImportText').classList.add('hidden');
+        });
+
+        document.getElementById('individualButton').addEventListener('click', function() {
+            document.getElementById('individualImportText').classList.remove('hidden');
+            document.getElementById('importText').classList.add('hidden');
+        });
+
+        // Copy to clipboard functionality
+        const copyButtons = document.querySelectorAll('.copy-button');
+        copyButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const textToCopy = button.getAttribute('data-clipboard-text');
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    // Change the icon to indicate the text was copied
+                    button.innerHTML = '<i class="fas fa-check"></i>';
+                    // Reset the icon back to copy after 2 seconds
+                    setTimeout(() => {
+                        button.innerHTML = '<i class="far fa-copy"></i>';
+                    }, 2000);
+                }, (err) => {
+                    console.error('Could not copy text: ', err);
+                });
+            });
+        });
+
+        // Accordion functionality
+        const accordionButtons = document.querySelectorAll('.accordion-button');
+        accordionButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const allContents = document.querySelectorAll('.accordion-content');
+                const accordionContent = button.nextElementSibling;
+                allContents.forEach(content => {
+                    if (content !== accordionContent) {
+                        content.classList.add('hidden');
+                        content.previousElementSibling.children[0].classList.remove('fa-chevron-up');
+                        content.previousElementSibling.children[0].classList.add('fa-chevron-down');
+                    }
+                });
+                accordionContent.classList.toggle('hidden');
+                button.children[0].classList.toggle('fa-chevron-down');
+                button.children[0].classList.toggle('fa-chevron-up');
+            });
+        });
+
+        // Preview functionality
+        document.getElementById('previewButton').addEventListener('click', function() {
+            document.getElementById('accordionPreview').classList.remove('hidden');
+            document.getElementById('codePreview').classList.add('hidden');
+        });
+
+        // Code functionality
+        document.getElementById('codeButton').addEventListener('click', function() {
+            document.getElementById('codePreview').classList.remove('hidden');
+            document.getElementById('accordionPreview').classList.add('hidden');
+        });
+
+        // View More functionality
+        document.getElementById('viewMoreButton').addEventListener('click', function() {
+            const codeTextArea = document.getElementById('codeTextArea');
+            if (this.textContent === 'View More') {
+                codeTextArea.style.height = codeTextArea.scrollHeight + 'px'; // Expand to show full content
+                codeTextArea.style.overflowY = 'scroll'; // Enable scrollbar
+                this.textContent = 'View Less';
+            } else {
+                codeTextArea.style.height = '5rem'; // Collapse to show initial 5 lines
+                codeTextArea.style.overflowY = 'hidden'; // Hide scrollbar
+                this.textContent = 'View More';
+            }
+        });
+
+        // Copy to clipboard functionality for code preview
+        document.getElementById('copyPasteButton').addEventListener('click', function() {
+            const codeTextArea = document.getElementById('codeTextArea');
+            codeTextArea.select();
+            document.execCommand('copy');
+            // Change the icon to indicate the text was copied
+            this.innerHTML = '<i class="fas fa-check"></i>';
+            setTimeout(() => {
+                // Reset the icon back to copy after 2 seconds
+                this.innerHTML = '<i class="far fa-copy"></i>';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Enlace al archivo de Tailwind CSS en el CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+
+  </head>
+
+  <body class="flex justify-center h-screen bg-black">
+
+    <div class="w-1/2 text-white">
+
+      <h1 class="text-4xl font-bold">Dropdown</h1>
+      <p class="mt-4"> Displays a list of actions or options that a user can
+        choose. </p>
+
+      <br>
+      <div>
+        <a href target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-800 mx-2 my-1">
+          <img src="https://img.icons8.com/?size=256&id=5YDtlBFCcJag&format=png"
+            alt="Favicon" class="w-6 h-6 mr-2">
+          Storybook
+        </a>
+
+        <a href target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-800 mx-2 my-1">
+          <img src="https://img.icons8.com/?size=256&id=24895&format=png"
+            alt="Favicon" class="w-6 h-6 mr-2">
+          @nextui-org/dropdown
+        </a>
+
+        <a href target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-800 mx-2 my-1">
+          <img src="https://img.icons8.com/?size=256&id=gav46YArUSy1&format=png"
+            alt="Favicon" class="w-6 h-6 mr-2">
+          React Aria
+        </a>
+
+        <a href target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-800 mx-2 my-1 ">
+          <ion-icon name="logo-github" class="mr-2"></ion-icon> Source
+
+        </a>
+
+        <a href
+          target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-800 mx-2 my-1">
+          <ion-icon name="logo-github" class="mr-2"></ion-icon> Styles Source
+        </a>
+      </div>
+
+      <br><br>
+      <hr class="bg-gray-900 my-4">
+
+      <div class="bg-gray-900 w-full h-40 rounded-lg"></div>
+
+      <h2 class="text-4xl font-bold pt-8 pb-8">Import</h2>
+      <div>
+        <p class="mb-2 text-lg">NextUI exports 5 dropdown-related components:
+        </p>
+        <p class="mb-2 text-lg"><strong class="text-blue-300">~
+            Dropdown:</strong>The main component, which is a wrapper for the
+          other components. This component is an extension of the Popover
+          component, so it accepts all the props of the Popover component.</p>
+        <p class="mb-2 text-lg"><strong class="text-blue-300">~ DropdownTrigger:
+          </strong>The component that triggers the dropdown menu to open.</p>
+        <p class="mb-2 text-lg"><strong class="text-blue-300">~ DropdownMenu:
+          </strong>The component that contains the dropdown items.</p>
+        <p class="mb-2 text-lg"><strong class="text-blue-300">~
+            DropdownSection:</strong>The component that contains a group of
+          dropdown items.</p>
+        <p class="mb-2 text-lg"><strong class="text-blue-300">~
+            DropdownItem:</strong>The component that represents a dropdown
+          item.</p>
+      </div>
+
+      <div>
+
+        <div class="mb-5">
+          <!-- Botones -->
+          <a href="#" id="mainButton"
+            class="inline-flex items-center px-4 py-2 bg-transparent text-white rounded hover:bg-gray-800 mx-2 my-1 border-white focus:border-b-4  ">
+            Main
+          </a>
+
+          <a href="#" id="individualButton"
+            class="inline-flex items-center px-4 py-2 bg-transparent text-white rounded hover:bg-gray-800 mx-2 my-1 border-white focus:border-b-4">
+            Individual
+          </a>
+        </div>
+        <div>
+          <div class="flex items-center w-full">
+            <div id="textContainer" class="bg-gray-900 p-2 flex-grow pr-56">
+              import {
+              Dropdown,
+              DropdownTrigger,
+              DropdownMenu,
+              DropdownSection,
+              DropdownItem
+              } from "@nextui-org/react";
+            </div>
+            <div id="textContainer2"
+              class="bg-gray-900 p-2 flex-grow  pr-56 hidden">
+              import {
+              Dropdown,
+              DropdownTrigger,
+              DropdownMenu,
+              DropdownSection,
+              DropdownItem
+              } from "@nextui-org/dropdown";
+            </div>
+            <button class="px-4 py-5 bg-gray-900 text-white hover:bg-gray-800"
+              onclick="copyToClipboard()">
+              <ion-icon name="copy-outline" class="w-3 "></ion-icon>
+            </button>
+          </div>
+          <div id="popup"
+            class="hidden bg-gray-800 text-white px-4 py-2 rounded absolute top-full left-1/2 transform -translate-x-1/2 mt-4">
+            Texto copiado
+          </div>
+        </div>
+      </div>
+
+      <div class=" USAGESS mb-32 pb-32">
+
+        <h2 class="text-4xl font-bold pt-8 pb-8">Usage</h2>
+
+        <!-- Botones 2 -->
+        <div>
+          <a href="#" id="previewButton" onclick="mostrarPreview()"
+          class="inline-flex items-center px-4 py-2 bg-transparent text-white rounded hover:bg-gray-800 mx-2 my-1 border-white  focus:border-b-4 border-b-4">
+          Preview
+        </a>
+
+        <a href="#" id="codeButton" onclick="mostrarCode()"
+          class="inline-flex items-center px-4 py-2 bg-transparent text-white rounded hover:bg-gray-800 mx-2 my-1 border-white focus:border-b-4">
+          Code
+        </a>
+
+        </div>
+
+        <div id="previewDiv"
+          class="border border-gray-900 w-full h-25 rounded-lg mt-4">
+          <!-- Dropdown component with Alpine.js -->
+    <div class="relative" x-data="{ open: false }">
+      <!-- Trigger button -->
+      <button @click="open = !open" class="p-3 rounded-lg border-solid border-4 m-4 focus:outline-none ">
+        Open Menu
+      </button>
+
+      <!-- Dropdown menu -->
+      <div 
+          x-show="open" 
+          @click.away="open = false"
+          class="absolute left-0 -top-40 mt-2 w-48 bg-gray-900 rounded-md shadow-lg z-50"
+          x-transition:enter="transition ease-out duration-100"
+          x-transition:enter-start="transform opacity-0 scale-95"
+          x-transition:enter-end="transform opacity-100 scale-100"
+          x-transition:leave="transition ease-in duration-75"
+          x-transition:leave-start="transform opacity-100 scale-100"
+          x-transition:leave-end="transform opacity-0 scale-95"
+      >
+          <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-gray-400">New file</a>
+          <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-gray-400">Copy link</a>
+          <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-gray-400">Edit file</a>
+          <a href="#" class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-400">Delete file</a>
+      </div>
+  </div>
+        </div>
+
+        <div id="codeDiv"
+          class="relative bg-black border border-gray-900 w-full h-25 rounded-lg mt-4 hidden">
+          <div id="3Botones" class="flex justify-end hidden">
+            <button
+              class="px-4 py-3.5 bg-gray-900 text-white hover:bg-gray-800">
+              <a
+                href=""
+                target="_blank" class="boton">
+                <ion-icon name="bug-outline"></ion-icon>
+              </a>
+            </button>
+            <button class="px-4 py-3.5 bg-gray-900 text-white hover:bg-gray-800"
+              onclick="copyToClipboard2()">
+              <ion-icon name="copy-outline"></ion-icon>
+            </button>
+            <button
+              class="px-4 py-3.5 bg-gray-900 text-white hover:bg-gray-800">
+              <a
+                href=""
+                target="_blank" class="boton">
+                <img
+                  src="https://ngryman.gallerycdn.vsassets.io/extensions/ngryman/codesandbox-theme/2.0.0/1634657178484/Microsoft.VisualStudio.Services.Icons.Default"
+                  alt="Favicon" class="w-3 h-3">
+              </a>
+            </button>
+          </div>
+
+          <!-- Div transparente -->
+          <div id="divTrans"
+            class="absolute top-0 left-0 w-full h-full bg-black opacity-50 flex justify-center items-center">
+
+            <!-- Botón "Show more" -->
+            <button onclick="mostrarMas()"
+              class="px-4 py-2 bg-white text-black font-bold rounded-lg outline-none focus:outline-none">Show
+              more</button>
+          </div>
+          <div
+            class="flex flex-col justify-center items-center  overflow-hidden h-56 "
+            id="tecsto">
+            <code id="codigo" class="block whitespace-pre overflow-auto">
+              import React from "react";
+              import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem,
+              Button}
+              from "@nextui-org/react";
+
+              export default function App() {
+              return (
+              Dropdown>
+              DropdownTrigger>
+              Button
+              variant="bordered"
+              >
+              Open Menu
+              /Button>
+              /DropdownTrigger>
+              DropdownMenu aria-label="Static Actions">
+              DropdownItem key="new">New file/DropdownItem>
+              DropdownItem key="copy">Copy link/DropdownItem>
+              DropdownItem key="edit">Edit file/DropdownItem>
+              DropdownItem key="delete" className="text-danger" color="danger">
+              Delete file
+              /DropdownItem>
+              /DropdownMenu>
+              /Dropdown>
+              );
+              }
+
+            </code>
+
+            <!-- Botón "Show less" (inicialmente oculto) -->
+            <button id="mostrarMenosBotton" onclick="mostrarMenos()"
+              class="m-4 px-4 py-2 bg-white text-black font-bold rounded-lg outline-none focus:outline-none hidden">Show
+              less</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <script type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="dropdown.js"></script>
+  </body>
+
+</html>

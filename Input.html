@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Input</title>
+  <!-- Enlace al archivo de Tailwind CSS en el CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css" rel="stylesheet" type="text/css" />
+  
+
+</head>
+
+<body class="flex justify-center bg-gradient-to-bl from-purple-900 via-black to-blue-900">
+  <div class="w-3/5">
+    <h1 class="text-4xl font-bold mt-10 text-white py-4">Input</h1>
+    <br>
+    <p class="text-white mt-4">Input is a component that allows users to enter text. It can be used to get user inputs in forms, search fields, and more.</p>
+    <br>
+    <a href="https://storybook.nextui.org/?path=/story/components-circularprogress--default" target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-800 mx-2 my-1">
+      <img src="https://img.icons8.com/?size=256&id=5YDtlBFCcJag&format=png" alt="Favicon" class="w-6 h-6 mr-2">
+      Storybook
+    </a>
+    <a href="https://www.npmjs.com/package/@nextui-org/progress" target="_blank" rel="noopener noreferrer"
+      class="inline-flex items-center px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-800 mx-2 my-1">
+      <img src="https://img.icons8.com/?size=256&id=24895&format=png" alt="Favicon" class="w-6 h-6 mr-2">
+      @nextui-org/progress
+    </a>
+    <a href="https://react-spectrum.adobe.com/react-aria/useProgressBar.html" target="_blank" rel="noopener noreferrer"
+      class="inline-flex items-center px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-800 mx-2 my-1">
+      <img src="https://img.icons8.com/?size=256&id=gav46YArUSy1&format=png" alt="Favicon" class="w-6 h-6 mr-2">
+      React Aria
+    </a>
+    <a href="https://github.com/nextui-org/nextui/tree/feat/v2/packages/components/progress" target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-800 mx-2 my-1">
+      <img src="https://www.iconsdb.com/icons/preview/white/github-11-xxl.png" alt="Favicon" class="w-6 h-6 mr-2">
+      Source
+    </a>
+
+    <a href="https://github.com/nextui-org/nextui/tree/feat/v2/packages/core/theme/src/components/circular-progress.ts"
+      target="_blank" rel="noopener noreferrer"
+      class="inline-flex items-center px-4 py-2 bg-gray-900 text-white rounded hover:bg-gray-800 mx-2 my-1">
+      <img src="https://www.iconsdb.com/icons/preview/white/github-11-xxl.png" alt="Favicon" class="w-6 h-6 mr-2">
+      Styles source
+    </a>
+
+    <br><br>
+    <div class="flex flex-col w-full">
+      <div class="divider"></div>
+      <div class="grid h-20 card bg-base-300 rounded-box place-items-center"></div>
+    </div>
+    <h2 class="text-white text-3xl font-bold pt-8 pb-8">Import</h2>
+
+    <!-- Botones -->
+    <a href="#" id="mainButton"
+      class="inline-flex items-center px-4 py-2 bg-transparent text-white rounded hover:bg-gray-800 mx-2 my-1 border-b border-white border-b-4">
+      Main
+    </a>
+
+    <a href="#" id="individualButton"
+      class="inline-flex items-center px-4 py-2 bg-transparent text-white rounded hover:bg-gray-800 mx-2 my-1 border-b border-white border-b-4">
+      Individual
+    </a>
+
+    <br><br>
+
+    <div class="flex items-center w-full">
+      <div id="textContainer" class="bg-gray-800 p-2 flex-grow">import {Input} from "@nextui-org/react";
+      </div>
+      <button class="px-4 py-3.5 bg-gray-900 text-white hover:bg-gray-800" onclick="copyToClipboard()">
+        <img src="https://www.iconsdb.com/icons/preview/white/copy-xxl.png" alt="Favicon" class="w-3 h-3">
+      </button>
+    </div>
+    <div id="popup" class="hidden bg-gray-800 text-white px-4 py-2 rounded absolute top-full left-1/2 transform -translate-x-1/2 mt-4">
+      Texto copiado
+    </div>
+    <h2 class="text-white text-3xl font-bold pt-8 pb-8">Usage</h2>
+
+    <!-- Botones 2 -->
+    <a href="#" id="previewButton" onclick="mostrarPreview()"
+      class="inline-flex items-center px-4 py-2 bg-transparent text-white rounded hover:bg-gray-800 mx-2 my-1 border-b border-white border-b-4">
+      Preview
+    </a>
+
+    <a href="#" id="codeButton" onclick="mostrarCode()"
+      class="inline-flex items-center px-4 py-2 bg-transparent text-white rounded hover:bg-gray-800 mx-2 my-1 border-b border-white border-b-4">
+      Code
+    </a>
+    <div id="previewDiv" class="bg-gray-800 border border-gray-600 w-full rounded-lg mt-4 shadow-lg p-4">
+      <div class="flex w-full flex-wrap md:flex-nowrap gap-4">
+    
+        <!-- Email Input 1 -->
+        <div class="flex-1">
+          <div class="relative">
+            <input type="email" id="email1"
+                  class="peer w-full px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded focus:outline-none focus:border-blue-500"
+                  placeholder=" " />
+            <label for="email1" class="absolute left-0 -top-3.5 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-blue-500 peer-focus:text-sm">Email</label>
+          </div>
+        </div>
+        
+        <!-- Email Input 2 -->
+        <div class="flex-1">
+          <div class="relative">
+            <input type="email" id="email2"
+                  class="peer w-full px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded focus:outline-none focus:border-blue-500"
+                  placeholder=" " />
+            <label for="email2" class="absolute left-0 -top-3.5 text-gray-500 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-blue-500 peer-focus:text-sm">Enter your email</label>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+    
+    
+    <div id="codeDiv" class="relative bg-black border border-gray-900 w-full h-25 rounded-lg mt-4 hidden">
+      <div id="3Botones" class="flex justify-end hidden">
+        <button  class="px-4 py-3.5 bg-gray-900 text-white hover:bg-gray-800">
+          <a href="https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Fnextui-org%2Fnextui%2Fissues%2Fnew%3Fassignees%3D%26labels%3Dbug%26template%3Dbug_report.yml%26title%3D%255BBUG%255D%2B-%2BCircular-progress" target="_blank" class="boton">
+          <img src="https://www.iconsdb.com/icons/preview/white/bug-xxl.png" alt="Favicon" class="w-3 h-3">
+          </a>
+        </button>
+        <button class="px-4 py-3.5 bg-gray-900 text-white hover:bg-gray-800" onclick="copyToClipboard2()">
+          <img src="https://www.iconsdb.com/icons/preview/white/copy-xxl.png" alt="Favicon" class="w-3 h-3">
+        </button>
+        <button class="px-4 py-3.5 bg-gray-900 text-white hover:bg-gray-800">
+          <a href="https://codesandbox.io/p/devbox/crimson-meadow-cqxdhf?file=%2FApp.jsx" target="_blank" class="boton">
+          <img src="https://ngryman.gallerycdn.vsassets.io/extensions/ngryman/codesandbox-theme/2.0.0/1634657178484/Microsoft.VisualStudio.Services.Icons.Default" alt="Favicon" class="w-3 h-3">
+          </a>
+        </button>
+      </div>
+      <!-- Div transparente -->
+      <div id="divTrans" class="absolute top-0 left-0 w-full h-full bg-black opacity-50 flex justify-center items-center">
+        <!-- Botón "Show more" -->
+        <button onclick="mostrarMas()" class="px-4 py-2 bg-white text-black font-bold rounded-lg outline-none focus:outline-none">Show more</button>
+      </div>
+      <div class="flex flex-col justify-center items-center h-full">
+        <code id="codigo" class="block whitespace-pre overflow-auto">
+          import React from "react";
+          import {Input} from "@nextui-org/react";
+          
+          export default function App() {
+            return (
+              < div className="flex w-full flex-wrap md:flex-nowrap gap-4">
+                < Input type="email" label="Email" />
+                < Input type="email" label="Email" placeholder="Enter your email" />
+              < /div>
+            );
+          }
+          
+        </code>
+    
+        <!-- Botón "Show less" (inicialmente oculto) -->
+        <button id="mostrarMenosBotton" onclick="mostrarMenos()" class="m-4 px-4 py-2 bg-white text-black font-bold rounded-lg outline-none focus:outline-none hidden">Show less</button>
+      </div>
+    </div>
+    
+
+
+  </div>
+
+</body>
+
+<script src="Actividad11.js"></script>
+
+</html>

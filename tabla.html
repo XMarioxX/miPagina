@@ -1,0 +1,614 @@
+<html lang="en" class="dark">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://flowbite.com/docs/flowbite.css?v=2.3.0a">
+        <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    </head>
+    <body style="height: 600px; background: black;" class="p-5 bg-white antialiased ">
+        <div id="exampleWrapper" class="overflow-hidden">
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <div class="flex items-center justify-between flex-column md:flex-row flex-wrap space-y-4 md:space-y-0 py-4">
+                    <label for="table-search-users" class="sr-only">Search</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"></path>
+                            </svg>
+                        </div>
+                        <input type="text" id="table-search-users" onkeyup="filterUsers(this.value);" class="block pt-2 ps-10 text-sm text-white border border-gray-300 rounded-lg w-80 bg-gray-900 focus:ring-white focus:border-white" placeholder="Search by name">
+                    </div>
+                    <div>
+                        <button id="dropdownStatusButton" data-dropdown-toggle="dropdownStatus" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
+                            <span class="sr-only">Status button</span>
+                            Status
+                            <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"></path>
+                            </svg>
+                        </button>
+                        <div id="dropdownStatus" class="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 hidden" data-popper-placement="bottom" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(64px, 81.6px, 0px);">
+                            <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownStatusButton">
+                                <li>
+                                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                                        <label for="statusActive" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Active</label>
+                                        <input id="statusActive" type="checkbox" onclick="setIsActive();" value="0" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                                        <label for="statusPaused" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Paused</label>
+                                        <input id="statusPaused" type="checkbox" onclick="setIsPaused();" value="1" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                                        <label for="statusVacation" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Vacation</label>
+                                        <input id="statusVacation" type="checkbox" onclick="setIsVacation();" value="2" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                    </div>
+                                </li>
+                                <li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <button id="dropdownColumnsButton" data-dropdown-toggle="dropdownColumns" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
+                            <span class="sr-only">Columns button</span>
+                            Columns
+                            <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"></path>
+                            </svg>
+                        </button>
+                        <div id="dropdownColumns" class="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 hidden" data-popper-placement="bottom" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(64px, 81.6px, 0px);">
+                            <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownColumnsButton">
+                                <li>
+                                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                                        <label for="columnId" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">ID</label>
+                                        <input id="columnId" type="checkbox" value="" onclick="setWithId();" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                                        <label for="columnName" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">NAME</label>
+                                        <input id="columnName" type="checkbox" value="" onclick="setWithName();" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                                        <label for="columnAge" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">AGE</label>
+                                        <input id="columnAge" type="checkbox" value="" onclick="setWithAge();" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                                        <label for="columnRole" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">ROLE</label>
+                                        <input id="columnRole" type="checkbox" value="" onclick="setWithRole();" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                                        <label for="columnTeam" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">TEAM</label>
+                                        <input id="columnTeam" type="checkbox" value="" onclick="setWithTeam();" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                                        <label for="columnEmail" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">EMAIL</label>
+                                        <input id="columnEmail" type="checkbox" value="" onclick="setWithEmail();" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                                        <label for="columnStatus" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">STATUS</label>
+                                        <input id="columnStatus" type="checkbox" value="" onclick="setWithStatus();" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                                        <label for="columnActions" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">ACTIONS</label>
+                                        <input id="columnActions" type="checkbox" value="" onclick="setWithActions();" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+                <table id="tablaDatos" class="w-full text-sm text-left rtl:text-right text-white bg-black">
+                </table>
+            </div>
+        </div>
+    <script src="https://flowbite.com/docs/flowbite.min.js"></script>
+    <script src="https://flowbite.com/docs/datepicker.min.js"></script>
+    <script>
+        /*
+        var datos = [
+            {
+                "id": 1,
+                "imgPerfil": "miguel.webp",
+                "nombre": "Jane Fisher",
+                "correo": "jane.fisher@example.com",
+                "edad": 22,
+                "rol": "Sr. Dev",
+                "equipo": "Development",
+                "estatus": 0,
+                "isChecked": false
+            },
+            {
+                "id": 2,
+                "imgPerfil": "brayan.webp",
+                "nombre": "Kristen Copper",
+                "correo": "kisten.copper@example.com",
+                "edad": 24,
+                "rol": "S. Manager",
+                "equipo": "Sales",
+                "estatus": 0,
+                "isChecked": false
+            },
+            {
+                "id": 3,
+                "imgPerfil": "miguel.webp",
+                "nombre": "Zoey Lang",
+                "correo": "zoey.lang@example.com",
+                "edad": 25,
+                "rol": "Teach Lead",
+                "equipo": "Development",
+                "estatus": 1,
+                "isChecked": false
+            },
+            {
+                "id": 4,
+                "imgPerfil": "brayan.webp",
+                "nombre": "William Howard",
+                "correo": "william.howard@example.com",
+                "edad": 28,
+                "rol": "C.M.",
+                "equipo": "Marketing",
+                "estatus": 2,
+                "isChecked": false
+            },
+            {
+                "id": 5,
+                "imgPerfil": "miguel.webp",
+                "nombre": "Tony Reichert",
+                "correo": "tony.reichert@example.com",
+                "edad": 29,
+                "rol": "CEO",
+                "equipo": "Management",
+                "estatus": 0,
+                "isChecked": false
+            },
+        ];
+        */
+        
+        var datos = [
+            {
+                "id": 1,
+                "imgPerfil": "miguel.webp",
+                "nombre": "Miguel Angel Ramirez Mejia",
+                "correo": "miguel.mejia@example.com",
+                "edad": 22,
+                "rol": "Sr. Dev",
+                "equipo": "Development",
+                "estatus": 0,
+                "isChecked": false
+            },
+            {
+                "id": 2,
+                "imgPerfil": "brayan.webp",
+                "nombre": "Brayan Carrillo Olmedo",
+                "correo": "brayan.carrillo@example.com",
+                "edad": 24,
+                "rol": "S. Manager",
+                "equipo": "Sales",
+                "estatus": 0,
+                "isChecked": false
+            },
+            {
+                "id": 3,
+                "imgPerfil": "juan.webp",
+                "nombre": "Juan Luis Ceja Rodriguez",
+                "correo": "juan.luis@example.com",
+                "edad": 25,
+                "rol": "Teach Lead",
+                "equipo": "Development",
+                "estatus": 1,
+                "isChecked": false
+            },
+            {
+                "id": 4,
+                "imgPerfil": "carlos.webp",
+                "nombre": "Carlos Martinez Martinez",
+                "correo": "carlos.martinez@example.com",
+                "edad": 28,
+                "rol": "C.M.",
+                "equipo": "Marketing",
+                "estatus": 2,
+                "isChecked": false
+            },
+            {
+                "id": 5,
+                "imgPerfil": "jairo.webp",
+                "nombre": "Jairo Axel Garcia Alcala",
+                "correo": "jairo.garcia@example.com",
+                "edad": 29,
+                "rol": "CEO",
+                "equipo": "Management",
+                "estatus": 0,
+                "isChecked": false
+            },
+        ];
+        
+        var userFilters = datos;
+        var listStatus = ["Active", "Paused", "Vacation"];
+        var tabla = $("#tablaDatos");
+        var auxTabla = $("#tablaDatos");
+        var withId = false;
+        var withName = true;
+        var withAge = false;
+        var withRole = true;
+        var withTeam = false;
+        var withEmail = false;
+        var withStatus = true;
+        var withActions = true;
+        var isActive = true;
+        var isPaused = true;
+        var isVacation = true;
+        var auxSearch = "";
+        var isCheckedGeneral = false;
+        
+        window.onload = function () {
+            const anchorTags = document.querySelectorAll('a'); 
+            anchorTags.forEach(function(a) {
+                a.addEventListener(
+                    'click', function(ev) {
+                        ev.preventDefault();
+                    }
+                )
+            });  
+            const dropdownEl = document.querySelector('[data-dropdown-toggle]');
+            /*
+            if (dropdownEl) {
+                dropdownEl.click();
+            }
+            const modalEl = document.querySelector('[data-modal-toggle]'); 
+            if(modalEl) {
+                modalEl.click();
+            }
+            const dateRangePickerEl = document.querySelector('[data-rangepicker] input');
+            if (dateRangePickerEl) {
+                dateRangePickerEl.focus();
+            }
+            const drawerEl = document.querySelector('[data-drawer-show]'); 
+            if (drawerEl) {
+                drawerEl.click()
+            }
+            */
+
+            $("#columnId").prop("checked", withId);
+            $("#columnName").prop("checked", withName);
+            $("#columnAge").prop("checked", withAge);
+            $("#columnRole").prop("checked", withRole);
+            $("#columnTeam").prop("checked", withTeam);
+            $("#columnEmail").prop("checked", withEmail);
+            $("#columnStatus").prop("checked", withStatus);
+            $("#columnActions").prop("checked", withActions);
+            $("#statusActive").prop("checked", isActive);
+            $("#statusPaused").prop("checked", isPaused);
+            $("#statusVacation").prop("checked", isVacation);
+
+            generateDataTable(datos);
+        }
+
+        function generateDataTable(objDatos) {
+            tabla.empty();
+            let thead = $("<thead></thead>").addClass("text-xs text-white uppercase border-b border-white");
+            let trThead = $("<tr></tr>");
+
+            let thTheadCheck = $("<th></th>").attr("scope", "col").addClass("p-4");
+            let divTheadCheck = $("<div></div>").addClass("flex items-center");
+            let inputTheadCheck = $("<input onclick='checkedAll();'>").attr("id", "checkbox-all-search").attr("type", "checkbox").prop("checked", isCheckedGeneral).addClass("w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600");
+            let labelTheadCheck = $("<label></label>").addClass("flex items-center");
+            divTheadCheck.append(inputTheadCheck);
+            divTheadCheck.append(labelTheadCheck);
+            thTheadCheck.append(divTheadCheck);
+            trThead.append(thTheadCheck);
+
+            if (withId) {
+                let thTheadId = $("<th></th>").attr("scope", "col").addClass("px-6 py-3").text("ID");
+                trThead.append(thTheadId);
+            }
+
+            if (withName) {
+                let thTheadName = $("<th></th>").attr("scope", "col").addClass("px-6 py-3").text("NAME");
+                trThead.append(thTheadName);
+            }
+
+            if (withAge) {
+                let thTheadIAge = $("<th></th>").attr("scope", "col").addClass("px-6 py-3").text("AGE");
+                trThead.append(thTheadIAge);
+            }
+
+            if (withRole) {
+                let thTheadRole = $("<th></th>").attr("scope", "col").addClass("px-6 py-3").text("ROLE");
+                trThead.append(thTheadRole);
+            }
+
+            if (withTeam) {
+                let thTheadTeam = $("<th></th>").attr("scope", "col").addClass("px-6 py-3").text("TEAM");
+                trThead.append(thTheadTeam);
+            }
+
+            if (withEmail) {
+                let thTheadEmail = $("<th></th>").attr("scope", "col").addClass("px-6 py-3").text("EMAIL");
+                trThead.append(thTheadEmail);
+            }
+
+            if (withStatus) {
+                let thTheadStatus = $("<th></th>").attr("scope", "col").addClass("px-6 py-3").text("STATUS");
+                trThead.append(thTheadStatus);
+            }
+
+            if (withActions) {
+                let thTheadActions = $("<th></th>").attr("scope", "col").addClass("px-6 py-3").text("ACTIONS");
+                trThead.append(thTheadActions);
+            }
+
+            thead.append(trThead);
+            tabla.append(thead);
+            
+            let tbody = $("<tbody></tbody>");
+            objDatos.forEach(function(persona) {
+                let fila = $('<tr>').addClass("border-b bg-black border-gray-700 hover:bg-gray-900");
+
+                let tdCheckbox = $('<td></td>').addClass("w-4 p-4");
+                let divCheckbox = $('<div></div>').addClass("flex items-center");
+                let checkbox = $("<input onclick='checkUser(this.value);'>").attr("type", "checkbox").attr("id", "checkbox-table-search-" + persona.id).val(persona.id).prop("checked", persona.isChecked).addClass("w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600");
+                let labelCheckbox = $("<label></label>").attr("for", "checkbox-table-search-" + persona.id).addClass("sr-only").text("checkbox");
+                divCheckbox.append(checkbox);
+                divCheckbox.append(labelCheckbox);
+                tdCheckbox.append(divCheckbox);
+                fila.append(tdCheckbox);
+
+                if (withId) {
+                    let tdId = $('<td></td>').addClass("w-4 p-4").text(persona.id);
+                    fila.append(tdId);
+                }
+
+                if (withName) {
+                    let thNombre = $("<th></th>").addClass("flex items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white").attr("scope", "row").attr("alt", "imagen");
+                    let imgPerfil = $("<img>").addClass("w-10 h-10 rounded-full").attr("src", persona.imgPerfil);
+                    let divNombre = $("<div></div>").addClass("ps-3");
+                    let divChildNombre = $("<div></div>").addClass("text-base font-semibold").text(persona.nombre);
+                    let divChildCorreo = $("<div></div>").addClass("font-normal text-gray-500").text(persona.correo);
+                    divNombre.append(divChildNombre);
+                    divNombre.append(divChildCorreo);
+                    thNombre.append(imgPerfil);
+                    thNombre.append(divNombre);
+                    fila.append(thNombre);
+                }
+
+                if (withAge) {
+                    let tdEdad = $('<td></td>').addClass("w-4 p-4").text(persona.edad);
+                    fila.append(tdEdad);
+                }
+
+                if (withRole) {
+                    let thRole = $("<th></th>").addClass("items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white").attr("scope", "row").attr("alt", "imagen");
+                    let divRole = $("<div></div>").addClass("ps-3");
+                    let divChildRol = $("<div></div>").addClass("text-base font-semibold").text(persona.rol);
+                    let divChildEquipo = $("<div></div>").addClass("font-normal text-gray-500").text(persona.equipo);
+                    divRole.append(divChildRol);
+                    divRole.append(divChildEquipo);
+                    thRole.append(divRole);
+                    fila.append(thRole);
+                }
+
+                if (withTeam) {
+                    let tdEquipo = $('<td></td>').addClass("w-4 p-4").text(persona.equipo);
+                    fila.append(tdEquipo);
+                }
+
+                if (withEmail) {
+                    let tdCorreo = $('<td></td>').addClass("w-4 p-4").text(persona.correo);
+                    fila.append(tdCorreo);
+                }
+
+                if (withStatus) {
+                    let tdEstatus = $('<td></td>').addClass("w-4 p-4");
+                    let classStatus = persona.estatus == 0 ? 'bg-green-900 text-green-400' : (persona.estatus == 1 ? 'bg-yellow-900 text-yellow-400' : 'bg-red-900 text-red-400')
+                    let labelEstatus = $('<label></label>').addClass("opacity-5 " + classStatus + " p-2 rounded-full").text(listStatus[persona.estatus]);
+                    tdEstatus.append(labelEstatus);
+                    fila.append(tdEstatus);
+                }
+
+                if (withActions) {
+                    let tdActions = $('<td></td>').addClass("w-4 p-4");
+                    let btnActions = $('<button></button>').attr("id", "dropdownMenuIconButton" + persona.id).attr("type", "button").attr("data-dropdown-toggle", "dropdownDots" + persona.id).addClass("inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600");
+                    let svgActions = $('<svg></svg>').addClass("w-5 h-5").attr("aria-hidden", "true").attr("xmlns", "http://www.w3.org/2000/svg").attr("fill", "currentColor").attr("viewBox", "0 0 4 15");
+                    let pathActions = $('<path>').attr("M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z");
+                    svgActions.append(pathActions);
+                    btnActions.append(svgActions);
+                    tdActions.append(btnActions);
+
+                    let divActions = $('<div></div>').attr("id", "dropdownDots" + persona.id).addClass("z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600");
+                    let ulActions = $('<ul></ul>').addClass("py-2 text-sm text-gray-700 dark:text-gray-200").attr("aria-labelledby", "dropdownMenuIconButton" + persona.id);
+                    let liViewActions = $('<li></li>');
+                    let aViewActions = $('<a></a>').attr("href", "#").addClass("block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white").text("View");
+                    liViewActions.append(aViewActions);
+                    ulActions.append(liViewActions);
+                    let liEditActions = $('<li></li>');
+                    let aEditActions = $('<a></a>').attr("href", "#").addClass("block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white").text("Edit");
+                    liEditActions.append(aEditActions);
+                    ulActions.append(liEditActions);
+                    let liDeleteActions = $('<li></li>');
+                    let aDeleteActions = $('<a></a>').attr("href", "#").addClass("block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white").text("Delete");
+                    liDeleteActions.append(aDeleteActions);
+                    ulActions.append(liDeleteActions);
+
+                    divActions.append(ulActions);
+                    tdActions.append(divActions);
+
+                    fila.append(tdActions);
+                }
+
+                tbody.append(fila);
+            });
+
+            tabla.append(tbody);
+        }
+
+        function filterUsers(search) {
+            userFilters = datos.filter(persona => {
+                let atributo = persona.nombre.toLowerCase();
+                return atributo.includes(search.toLowerCase());
+            });
+            generateDataTable(userFilters);
+            auxSearch = search;
+        }
+
+        function filterStatus() {
+            let statusFilters = "";
+            let listIsActive = [];
+            let listIsPaused = [];
+            let listIsVacation = [];
+
+            if (isActive) {
+                listIsActive = datos.filter(user => user.estatus == 0);
+            }
+
+            if (isPaused) {
+                listIsPaused = datos.filter(user => user.estatus == 1);
+            }
+
+            if (isVacation) {
+                listIsVacation = datos.filter(user => user.estatus == 2);
+            }
+
+            userFilters = [];
+
+            listIsActive.forEach(function(user) {
+                userFilters.push(user);
+            });
+
+            listIsPaused.forEach(function(user) {
+                userFilters.push(user);
+            });
+
+            listIsVacation.forEach(function(user) {
+                userFilters.push(user);
+            });
+
+            userFilters.sort((a, b) => a.id - b.id);
+            generateDataTable(userFilters);
+        }
+
+        function checkUser(id) {
+            let iUser = datos.findIndex(user => user.id == id);
+            datos[iUser].isChecked = !datos[iUser].isChecked;
+        }
+
+        function checkedAll() {
+            console.log(isAllChecked());
+            if (isAllChecked()) {
+                datos.forEach(function(persona) {
+                    persona.isChecked = false;
+                });
+            } else {
+                datos.forEach(function(persona) {
+                    persona.isChecked = true;
+                });
+            }
+            filterUsers(auxSearch);
+        }
+
+        function isAllChecked() {
+            let isChecked = true;
+            datos.forEach(function(persona) {
+                if (!persona.isChecked) {
+                    isChecked = false;
+                    return false;
+                }
+            });
+            if (isChecked) {
+                isCheckedGeneral = false;
+                return true;
+            } else {
+                isCheckedGeneral = true;
+                return false;
+            }
+        }
+
+        function setIsActive() {
+            if (isPaused || isVacation) {
+                isActive = !isActive;
+                filterStatus();
+            } else {
+                $('#statusActive').prop("checked", true);
+            }
+        }
+
+        function setIsPaused() {
+            if (isActive || isVacation) {
+                isPaused = !isPaused;
+                filterStatus();
+            } else {
+                $('#statusPaused').prop("checked", true);
+            }
+        }
+
+        function setIsVacation() {
+            if (isActive || isPaused) {
+                isVacation = !isVacation;
+                filterStatus();
+            } else {
+                $('#statusVacation').prop("checked", true);
+            }
+        }
+        
+        function setWithId() {
+            withId = !withId;
+            generateDataTable(userFilters);
+        }
+
+        function setWithName() {
+            withName = !withName;
+            generateDataTable(userFilters);
+        }
+
+        function setWithAge() {
+            withAge = !withAge;
+            generateDataTable(userFilters);
+        }
+
+        function setWithRole() {
+            withRole = !withRole;
+            generateDataTable(userFilters);
+        }
+
+        function setWithTeam() {
+            withTeam = !withTeam;
+            generateDataTable(userFilters);
+        }
+
+        function setWithEmail() {
+            withEmail = !withEmail;
+            generateDataTable(userFilters);
+        }
+
+        function setWithStatus() {
+            withStatus = !withStatus;
+            generateDataTable(userFilters);
+        }
+
+        function setWithActions() {
+            withActions = !withActions;
+            generateDataTable(userFilters);
+        }
+    </script>
+</body>
+</html>

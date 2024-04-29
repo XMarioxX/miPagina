@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.1.2/css/ionicons.min.css"
+      integrity="sha512-Kxgs3+RyDnkY5lHp1qWDXGkZzzNNiO08i+M3ZoK01qjBGpu63TKWADRLWiM2Ug0Kpu3pzjC1MBqUYyjW62j3kg=="
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body
+    class="flex justify-center bg-gradient-to-bl from-purple-900 via-black to-blue-900"
+  >
+    <div class="w-3/5">
+      <h1 class="text-4xl font-bold mt-10 text-white py-4">Modal</h1>
+      <br />
+      <p class="text-white">
+        Displays a dialog with a custom content that requires attention or provides additional information.
+      </p>
+      <div class="my-4">
+        <a
+          href="https://storybook.nextui.org/?path=/story/components-spinner--default"
+          class="inline-flex items-center p-2 bg-gray-900 text-white rounded hover:bg-gray-800 mx-1 my-1"
+        >
+          <img
+            src="https://img.icons8.com/?size=256&id=5YDtlBFCcJag&format=png"
+            alt="Favicon"
+            class="w-6 h-6 mr-2"
+          />
+          Storybook
+        </a>
+        <a
+          href="https://www.npmjs.com/package/@nextui-org/spinner"
+          class="inline-flex items-center p-2 bg-gray-900 text-white rounded hover:bg-gray-800 mx-1.5 my-1"
+        >
+          <img
+            src="https://img.icons8.com/?size=256&id=24895&format=png"
+            alt="Favicon"
+            class="w-6 h-6 mr-2"
+          />
+          @nextui-org/spinner
+        </a>
+        <a
+          href="https://react-spectrum.adobe.com/react-aria/useTabList.html"
+          class="inline-flex items-center p-2 bg-gray-900 text-white rounded hover:bg-gray-800 mx-1.5 my-1"
+        >
+          <svg
+            aria-hidden="true"
+            aria-label="Adobe"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="0 0 30 26"
+            width="1em"
+            class="text-lg text-[#E1251B]"
+            tabindex="-1"
+          >
+            <polygon points="19,0 30,0 30,26"></polygon>
+            <polygon points="11.1,0 0,0 0,26"></polygon>
+            <polygon
+              points="15,9.6 22.1,26 17.5,26 15.4,20.8 10.2,20.8"
+            ></polygon>
+          </svg>
+          React Aria
+        </a>
+        <a
+          href="https://github.com/nextui-org/nextui/tree/main/packages/components/spinner"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center p-2 bg-gray-900 text-white rounded hover:bg-gray-800 mx-1.5 my-1"
+        >
+          <ion-icon name="logo-github" class="w-6 h-6 mr-2"></ion-icon>
+          Source
+        </a>
+        <a
+          href="https://github.com/nextui-org/nextui/tree/feat/v2/packages/core/theme/src/components/spinner.ts"
+          class="inline-flex items-center p-2 bg-gray-900 text-white rounded hover:bg-gray-800 mx-1.5 my-1"
+        >
+          <ion-icon name="logo-github" class="w-6 h-6 mr-2"></ion-icon> Styles
+          Source
+        </a>
+      </div>
+
+      <div class="flex flex-col w-full">
+        <div class="divider"></div>
+        <div
+          class="grid h-20 card bg-base-300 rounded-box place-items-center"
+        ></div>
+      </div>
+
+      <br />
+
+      <h2 class="text-white text-2xl font-bold">Import</h2>
+      <h3 class="text-white">NextUI exports 5 modal-related components:</h3>
+      <ul class="text-white list-disc pl-8 mt-5">
+        <li class="mt-5">
+          <span class="text-sky-400 font-bold">Modal</span>: The main component
+          to display a modal.
+        </li>
+        <li class="mt-3">
+          <span class="text-sky-400 font-bold">ModalContent</span>: The wrapper
+          of the other modal components.
+        </li>
+        <li class="mt-3">
+          <span class="text-sky-400 font-bold">ModalHeader</span>: The header of
+          the modal.
+        </li>
+        <li class="mt-3">
+          <span class="text-sky-400 font-bold">ModalBody</span>: The body of the
+          modal.
+        </li>
+        <li class="mt-3">
+          <span class="text-sky-400 font-bold">ModalFooter</span>: The footer of
+          the modal.
+        </li>
+      </ul>
+      <div class="py-4">
+                <div class="mb-4">
+                  <button id="mainButton"
+                    class="px-4 py-2 bg-transparent text-white rounded hover:bg-gray-800 mx-2 my-1 border-b-2 border-transparent focus:border-b-2 border-white active:border-b-2"
+                    onclick="text('main')">Main</button>
+                  <button id="individualButton"
+                    class="px-4 py-2 bg-transparent text-white rounded hover:bg-gray-800 mx-2 my-1 border-b-2 border-transparent focus:border-b-2 active:border-b-2"
+                    onclick="text('individual')">Individual</button>
+                </div>
+                <div class="text-white bg-gray-900 rounded px-4 py-2 flex items-center justify-between">
+                  <h1 id="text"><span class="text-purple-500">import</span> {</br>  Modal, </br> ModalContent, </br> ModalContent, </br> ModalBody, </br> ModalFooter</br>} <span class="text-purple-500">from</span><span class="text-green-400">"@nextui-org/react"</span>;
+                  </h1>
+                  <ion-icon id="copy-text" name="copy-outline" class="w-4 text-white cursor-pointer" onclick="copy()"></ion-icon>
+                </div>
+              </div>
+          
+              <br>
+    <h2 class="text-white text-2xl font-bold">Usage</h2>
+
+    <div class="py-4">
+      <div class="mb-4">
+        <button id="previewButton"
+          class="px-4 py-2 bg-transparent text-white rounded hover:bg-gray-800 mx-2 my-1 border-b-2 border-transparent focus:border-b-2 border-white active:border-b-2"
+          onclick="text2('preview')">Preview</button>
+        <button id="codeButton"
+          class="px-4 py-2 bg-transparent text-white rounded hover:bg-gray-800 mx-2 my-1 border-b-2 border-transparent focus:border-b-2 active:border-b-2"
+          onclick="text2('code')">Code</button>
+      </div>
+
+    <div id="preview-item"
+        class="relative overflow-y-hidden flex items-center border border-default-200 dark:border-default-100 px-2 py-4 rounded-lg overflow-hidden">
+        <div class="flex flex-col w-full">
+           <!-- Botón para abrir el modal -->
+<button
+  id="open-modal-btn"
+  class="w-32 px-4 py-2 bg-gray-500 text-white text-base font-medium rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-300"
+  onclick="document.getElementById('my-modal').style.display='block'"
+>
+  Open Modal
+</button>
+
+<!-- Estructura del Modal -->
+<div class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full hidden" id="my-modal">
+  <div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-black">
+    <!-- Botón 'X' para cerrar el modal -->
+    <div class="flex justify-between items-center">
+      <h3 class="text-lg leading-6 font-medium text-white">Modal Title</h3>
+      <button
+        class="text-white"
+        onclick="document.getElementById('my-modal').style.display='none'"
+      >
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+    <div class="mt-2 py-3">
+      <p class="text-sm text-white">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar risus non risus hendrerit venenatis. Pellentesque sit amet hendrerit risus, sed porttitor quam.
+      </p>
+      <br>
+      <p class="text-sm text-white">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar risus non risus hendrerit venenatis. Pellentesque sit amet hendrerit risus, sed porttitor quam.
+      </p>
+      <br>
+
+      <p class="text-sm text-white">
+        Magna exercitation reprehenderit magna aute tempor cupidatat consequat elit dolor adipisicing. Mollit dolor eiusmod sunt ex incididunt cillum quis. Velit duis sit officia eiusmod Lorem aliqua enim laboris do dolor eiusmod. Et mollit incididunt nisi consectetur esse laborum eiusmod pariatur proident Lorem eiusmod et. Culpa deserunt nostrud ad veniam.
+      </p>
+    </div>
+    <!-- Botones alineados a la derecha -->
+    <div class="flex justify-end items-center pt-4">
+      <button
+        id="close-modal-btn"
+        class="px-4 py-2 text-red-500 text-base font-medium rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-300"
+        onclick="document.getElementById('my-modal').style.display='none'"
+      >
+        Close
+      </button>
+      <button
+        class="px-4 py-2 ml-3 bg-blue-500 text-white text-base font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300"
+      >
+        Action
+      </button>
+    </div>
+  </div>
+</div>
+
+
+
+        </div>
+
+          
+          
+    </div>
+      <div id="preview-item-2" class="hidden relative flex flex-col items-center w-full">
+        <button id="show-more-less-btn"
+          class="absolute top-1/2 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white py-1 px-2 mt-2 z-10 rounded-lg">Show
+          more</button>
+        <div id="icons" class="hidden absolute top-0 right-0 m-2 z-20 flex items-center space-x-2">
+          <div class="tooltip" data-tip="Report a bug">
+            <ion-icon name="bug-outline" class="w-4 text-white cursor-pointer" onclick="git()"></ion-icon>
+          </div>
+          <div class="tooltip" data-tip="Copy">
+            <ion-icon name="copy-outline" class="w-4 text-white cursor-pointer" onclick="copy2()"></ion-icon>
+          </div>
+          <div class="tooltip" data-tip="Open in CodeSandbox">
+            <ion-icon name="cube-outline" class="w-4 text-white cursor-pointer" onclick="sandbox()"></ion-icon>
+          </div>
+        </div>
+        <div id="preview-2" class="relative overflow-y-hidden flex flex-col w-full border border-black border-default-200 bg-black px-2 py-4 rounded-lg overflow-hidden h-40 transition-all duration-500">
+            <h1 class="pl-4"><span class="text-purple-500">import</span> React <span class="text-purple-500">from</span>
+              <span class="text-green-400">"react"</span>;</h1>
+            <h1 class="pl-4"><span class="text-purple-500">import</span> {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure} <span
+                class="text-purple-500">from</span> <span class="text-green-400">"@nextui-org/react"</span>;</h1>
+            <br>
+            <h1 class="pl-4"><span class="text-purple-500">export default function</span> <span
+                class="text-blue-500">App</span>() {</h1>
+            <h1 class="pl-8"><span class="text-purple-500">const</span> {isOpen, onOpen, onOpenChange} <span class="text-yellow-600">=</span> <span class="text-blue-500">useDisclosure</span>();</h1>
+                </br>
+
+            
+            <h1 class="pl-8"><span class="text-purple-500">return</span> (</h1>
+            <h1 class="pl-12"><></h1>
+            <h1 class="pl-4"><span class="text-yellow-600">Button </span><span class="text-red-500">onPress</span>=<span class="text-green-400">{onOpen}</span>>Open Modal&lt;Button&gt;</h1>
+<h1 class="pl-4"><span class="text-yellow-600">&lt;Modal </span><span class="text-red-500">isOpen</span>=<span class="text-green-400">{isOpen}</span> <span class="text-red-500">onOpenChange</span>=<span class="text-green-400">{onOpenChange}</span>></h1>
+<h1 class="pl-8"><span class="text-purple-500">&lt;ModalContent&gt;</span></h1>
+<h1 class="pl-12"><span class="text-yellow-600">&lt;ModalHeader&gt; </span><span class="text-red-500">className</span>=<span class="text-green-400">"flex flex-col gap-1"</span>>Modal Title<span class="text-yellow-600">&lt;/ModalHeader&gt; </span></h1>
+<h1 class="pl-12"><span class="text-yellow-600">&lt;ModalBody&gt;</span></h1>
+<h1 class="pl-16"><span class="text-white">&lt;p&gt;<br></span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar risus non risus hendrerit venenatis. Pellentesque sit amet hendrerit risus, sed porttitor quam.<span class="text-white"><br>&lt;/p&gt;</span></h1>
+<h1 class="pl-16"><span class="text-white">&lt;p&gt;<br></span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar risus non risus hendrerit venenatis. Pellentesque sit amet hendrerit risus, sed porttitor quam.<span class="text-white"><br>&lt;/p&gt;</span></h1>
+<h1 class="pl-16"><span class="text-white">&lt;p&gt;<br></span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar risus non risus hendrerit venenatis. Pellentesque sit amet hendrerit risus, sed porttitor quam.<span class="text-white"><br>&lt;/p&gt;</span></h1>
+<h1 class="pl-12"><span class="text-yellow-600">&lt;/ModalBody&gt;</span></h1>
+
+<h1 class="pl-8"><span class="text-yellow-600">&lt;ModalFooter&gt;</span></h1>
+<h1 class="pl-12"><span class="text-yellow-600">&lt;Button&gt; </span><span class="text-red-500">color</span>=<span class="text-green-400">"danger"</span> <span class="text-red-500">variant</span>=<span class="text-green-400">"light"</span> <span class="text-blue-500">onPress</span>=<span class="text-green-400">{onClose}</span>></h1>
+<h1 class="pl-16">Close</h1>
+<h1 class="pl-12"><span class="text-yellow-600">&lt;/Button&gt;</span>></h1>
+<h1 class="pl-12"><span class="text-yellow-600">&lt;Button&gt; </span><span class="text-red-500">color</span>=<span class="text-green-400">"primary"</span> <span class="text-blue-500">onPress</span>=<span class="text-green-400">{onClose}</span>></h1>
+<h1 class="pl-16">Action</h1>
+<h1 class="pl-12"><span class="text-yellow-600">&lt;/Button&gt;</span>></h1>
+<h1 class="pl-8"><span class="text-yellow-600">&lt;/ModalFooter&gt;</span>></h1>
+
+        </div>
+        
+
+    </div>
+
+
+
+      </div>
+    <script src="modal.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

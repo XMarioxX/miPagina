@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slider</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.1.2/css/ionicons.min.css"
+    integrity="sha512-Kxgs3+RyDnkY5lHp1qWDXGkZzzNNiO08i+M3ZoK01qjBGpu63TKWADRLWiM2Ug0Kpu3pzjC1MBqUYyjW62j3kg=="
+    crossorigin="anonymous" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.3/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="flex justify-center bg-black">
+  <div class="w-3/5">
+    <h1 class="text-4xl font-bold mt-10 text-white py-4">Slider</h1>
+    <br>
+    <p class="text-white">A slider allows a user to select one or more values within a range.</p>
+    <div class="my-4">
+      <a href="https://storybook.nextui.org/?path=/story/components-slider--default"
+        class="inline-flex items-center p-2 bg-gray-900 text-white rounded hover:bg-gray-800 mx-1 my-1">
+        <img src="https://img.icons8.com/?size=256&id=5YDtlBFCcJag&format=png" alt="Favicon" class="w-6 h-6 mr-2">
+        Storybook
+      </a>
+      <a href="https://www.npmjs.com/package/@nextui-org/slider"
+        class="inline-flex items-center p-2 bg-gray-900 text-white rounded hover:bg-gray-800 mx-1.5 my-1">
+        <img src="https://img.icons8.com/?size=256&id=24895&format=png" alt="Favicon" class="w-6 h-6 mr-2">
+        @nextui-org/slider
+      </a>
+      <!-- <a href="https://nextjs.org/docs/app/building-your-application/rendering/server-components"
+        class="inline-flex items-center p-2 bg-gray-900 text-white rounded hover:bg-gray-800 mx-1.5 my-1">
+        <svg class="w-6 h-6 mr-2" aria-hidden="true" height="18" viewBox="0 0 256 256" width="18" focusable="false"
+          tabindex="-1">
+          <path
+            d="M119.617.069c-.55.05-2.302.225-3.879.35-36.36 3.278-70.419 22.894-91.99 53.044-12.012 16.764-19.694 35.78-22.597 55.922C.125 116.415 0 118.492 0 128.025c0 9.533.125 11.61 1.151 18.64 6.957 48.065 41.165 88.449 87.56 103.411 8.309 2.678 17.067 4.504 27.027 5.605 3.879.425 20.645.425 24.524 0 17.192-1.902 31.756-6.155 46.12-13.486 2.202-1.126 2.628-1.426 2.327-1.677-.2-.15-9.584-12.735-20.845-27.948l-20.47-27.648-25.65-37.956c-14.114-20.868-25.725-37.932-25.825-37.932-.1-.025-.2 16.84-.25 37.431-.076 36.055-.1 37.506-.551 38.357-.65 1.226-1.151 1.727-2.202 2.277-.801.4-1.502.475-5.28.475h-4.33l-1.15-.725a4.679 4.679 0 0 1-1.677-1.827l-.526-1.126.05-50.166.075-50.192.776-.976c.4-.525 1.251-1.2 1.852-1.526 1.026-.5 1.426-.55 5.755-.55 5.105 0 5.956.2 7.282 1.651.376.4 14.264 21.318 30.88 46.514 16.617 25.195 39.34 59.599 50.5 76.488l20.27 30.7 1.026-.675c9.084-5.905 18.693-14.312 26.3-23.07 16.191-18.59 26.626-41.258 30.13-65.428 1.026-7.031 1.151-9.108 1.151-18.64 0-9.534-.125-11.61-1.151-18.641-6.957-48.065-41.165-88.449-87.56-103.411-8.184-2.652-16.892-4.479-26.652-5.58-2.402-.25-18.943-.525-21.02-.325zm52.401 77.414c1.201.6 2.177 1.752 2.527 2.953.2.65.25 14.562.2 45.913l-.074 44.987-7.933-12.16-7.958-12.16v-32.702c0-21.143.1-33.028.25-33.603.4-1.401 1.277-2.502 2.478-3.153 1.026-.525 1.401-.575 5.33-.575 3.704 0 4.354.05 5.18.5z"
+            fill="currentColor"></path>
+        </svg>Server component
+      </a> -->
+      <a href="https://github.com/nextui-org/nextui/tree/main/packages/components/slider" target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center p-2 bg-gray-900 text-white rounded hover:bg-gray-800 mx-1.5 my-1 ">
+        <ion-icon name="logo-github" class="w-6 h-6 mr-2"></ion-icon>
+        Source
+      </a>
+      <a href="https://github.com/nextui-org/nextui/tree/feat/v2/packages/core/theme/src/components/slider.ts"
+        class="inline-flex items-center p-2 bg-gray-900 text-white rounded hover:bg-gray-800 mx-1.5 my-1">
+        <ion-icon name="logo-github" class="w-6 h-6 mr-2"></ion-icon> Styles Source
+      </a>
+    </div>
+
+    <div class="flex flex-col w-full">
+      <div class="divider"></div>
+      <div class="grid h-40 card bg-base-300 rounded-box place-items-center"></div>
+    </div>
+
+    <br>
+
+    <h2 class="text-white text-2xl font-bold">Import</h2>
+
+    <div class="py-4">
+      <div class="mb-4">
+        <button id="mainButton"
+          class="px-4 py-2 bg-transparent text-white rounded hover:bg-gray-800 mx-2 my-1 border-b-2 border-transparent focus:border-b-2 border-white active:border-b-2"
+          onclick="text('main')">Main</button>
+        <button id="individualButton"
+          class="px-4 py-2 bg-transparent text-white rounded hover:bg-gray-800 mx-2 my-1 border-b-2 border-transparent focus:border-b-2 active:border-b-2"
+          onclick="text('individual')">Individual</button>
+      </div>
+      <div class="text-white bg-gray-900 rounded px-4 py-2 flex items-center justify-between">
+        <h1 id="text"><span class="text-purple-500">import</span> {Slider} <span class="text-purple-500">from</span>
+          <span class="text-green-200">"@nextui-org/react"</span>;
+        </h1>
+        <ion-icon id="copy-text" name="copy-outline" class="w-4 text-white cursor-pointer" onclick="copy()"></ion-icon>
+      </div>
+    </div>
+
+    <br>
+    <h2 class="text-white text-2xl font-bold">Usage</h2>
+
+    <div class="py-4">
+      <div class="mb-4">
+        <button id="previewButton"
+          class="px-4 py-2 bg-transparent text-white rounded hover:bg-gray-800 mx-2 my-1 border-b-2 border-transparent focus:border-b-2 border-white active:border-b-2"
+          onclick="text2('preview')">Preview</button>
+        <button id="codeButton"
+          class="px-4 py-2 bg-transparent text-white rounded hover:bg-gray-800 mx-2 my-1 border-b-2 border-transparent focus:border-b-2 active:border-b-2"
+          onclick="text2('code')">Code</button>
+      </div>
+<!-- ................... -->
+        
+
+        <div id="preview-item">
+          <p class="text-white pl-4 mb-2">Temperature</p>
+          <div class="w-64 mx-auto mt-8">
+            <input type="range" min="0" max="100" value="50" class="range-slider">
+        </div>
+        
+        </div>
+<!-- ................... -->
+      <div id="preview-item-2" class="hidden relative flex flex-col items-center w-full">
+        <button id="show-more-less-btn"
+          class="absolute top-1/2 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white py-1 px-2 mt-2 z-10 rounded-lg">
+          Show more</button>
+        <div id="icons" class="hidden absolute top-0 right-0 m-2 z-20 flex items-center space-x-2">
+          <div class="tooltip" data-tip="Report a bug">
+            <ion-icon name="bug-outline" class="w-4 text-white cursor-pointer" onclick="git()"></ion-icon>
+          </div>
+          <div class="tooltip" data-tip="Copy">
+            <ion-icon name="copy-outline" class="w-4 text-white cursor-pointer" onclick="copy2()"></ion-icon>
+          </div>
+          <div class="tooltip" data-tip="Open in CodeSandbox">
+            <ion-icon name="cube-outline" class="w-4 text-white cursor-pointer" onclick="sandbox()"></ion-icon>
+          </div>
+        </div>
+        <div id="preview-2"
+          class="relative overflow-y-hidden flex flex-col w-full border border-black border-default-200 bg-black px-2 py-4 rounded-lg overflow-hidden h-40 transition-all duration-500">
+          <h1 class="pl-4"><span class="text-purple-500">import</span> React <span class="text-purple-500">from</span>
+            <span class="text-green-200">"react"</span>;</h1>
+          <h1 class="pl-4"><span class="text-purple-500">import</span> {Slider} <span
+              class="text-purple-500">from</span> <span class="text-green-200">"@nextui-org/react"</span>;</h1>
+          <br>
+          <h1 class="pl-4"><span class="text-purple-500">export default function</span> <span
+              class="text-blue-200">App</span>() {</h1>
+          <h1 class="pl-8"><span class="text-purple-500">return</span> (</h1>
+          <h1 class="pl-12">
+            &lt;<span class="text-yellow-600">div </span>
+            <span class="text-blue-200">className</span>="
+            <span class="text-green-200">max-w-md</span>">
+          </h1>
+          <h1 class="pl-16">
+            &lt;<span class="text-yellow-600">div </span>
+            <span class="text-blue-200">className</span>="
+            <span class="text-green-200">space-y-1</span>">
+          </h1>
+          <h1 class="pl-20">
+            &lt;<span class="text-yellow-600">h4 </span>
+            <span class="text-blue-200">className</span>="
+            <span class="text-green-200">text-medium font-medium</span>">NextUI Components &lt;
+            <span class="text-yellow-600">/h4</span>>
+          </h1>
+          <h1 class="pl-20">
+            &lt;<span class="text-yellow-600">p </span>
+            <span class="text-blue-200">className</span>="
+            <span class="text-green-200">text-small text-default-400</span>">Beautiful, fast and modern React UI library.&lt;
+            <span class="text-yellow-600">/p</span>>
+          </h1>
+          <h1 class="pl-16">
+            &lt;<span class="text-yellow-600">/div</span>>
+          </h1>
+          <h1 class="pl-16">
+            &lt;<span class="text-yellow-600">Slider </span>
+            <span class="text-blue-200">className</span>="
+            <span class="text-green-200">my-4</span>" />
+          </h1>
+          <h1 class="pl-16">
+            &lt;<span class="text-yellow-600">div </span>
+            <span class="text-blue-200">className</span>="
+            <span class="text-green-200">flex h-5 items-center space-x-4 text-small</span>">
+          </h1>
+          <h1 class="pl-20">
+            &lt;<span class="text-yellow-600">div</span>">Blog&lt;
+            <span class="text-yellow-600">/div</span>>
+          </h1>
+          <h1 class="pl-20">
+            &lt;<span class="text-yellow-600">Slider </span>
+            <span class="text-blue-200">orientation</span>="
+            <span class="text-green-200">vertical</span>" />
+          </h1>
+          <h1 class="pl-20">
+            &lt;<span class="text-yellow-600">div</span>">Docs&lt;
+            <span class="text-yellow-600">/div</span>>
+          </h1>
+          <h1 class="pl-20">
+            &lt;<span class="text-yellow-600">Slider </span>
+            <span class="text-blue-200">orientation</span>="
+            <span class="text-green-200">vertical</span>" />
+          </h1>
+          <h1 class="pl-20">
+            &lt;<span class="text-yellow-600">div</span>">Source&lt;
+            <span class="text-yellow-600">/div</span>>
+          </h1>
+          <h1 class="pl-16">
+            &lt;<span class="text-yellow-600">/div</span>>
+          </h1>
+          <h1 class="pl-12">
+            &lt;<span class="text-yellow-600">/div</span>>
+          </h1>
+          <h1 class="pl-8">);</h1>
+          <h1 class="pl-4">}</h1>
+          <br>
+          <br>
+        </div>
+      </div>
+      <h2 class="text-white text-2xl font-bold pt-6 pb-6">Data Attributes</h2>
+      <p class="text-white pb-2"><span class="text-blue-400">'Slider' </span>has the following attributes :</p>
+      <ul class="list-disc text-gray-200">
+        <li class="pb-2 ml-4"><span class="text-blue-400">data-hover</span>: When the slider is being hovered. Based on <span class="text-blue-400">'useHover' </span>prop.</li>
+      </ul>
+      <ul class="list-disc text-gray-200">
+        <li class="pb-2 ml-4"><span class="text-blue-400">data-orientation</span>: The orientation of the slider. Based on  <span class="text-blue-400">'orientation' </span>prop.</li>
+      </ul>
+      <ul class="list-disc text-gray-200">
+        <li class="pb-2 ml-4"><span class="text-blue-400">data-draging</span>: When the thumb is being dragged.  </li>
+      </ul>
+      <ul class="list-disc text-gray-200">
+        <li class="pb-2 ml-4"><span class="text-blue-400">data-focus-visible</span>: When the thumb is focused. Based on  <span class="text-blue-400">'useFocusVisible' </span></li>
+      </ul>
+      <ul class="list-disc text-gray-200">
+        <li class="pb-2 ml-4"><span class="text-blue-400">data-hover</span>: When the thumb is being hovered. Based on  <span class="text-blue-400">'useHover' </span></li>
+      </ul>
+      <ul class="list-disc text-gray-200">
+        <li class="pb-2 ml-4"><span class="text-blue-400">data-pressed</span>: When the thumb is being pressed. Based on  <span class="text-blue-400">'usePress' </span></li>
+      </ul>
+
+      <h2 class="text-white text-2xl font-bold pt-6 pb-6">Accesibility</h2>
+      <ul class="list-disc text-gray-200">
+        <li class="pb-2 ml-4">Support for one or multiple thumbs.</li>
+        <li class="pb-2 ml-4">Multi-touch support for dragging multiple thumbs or multiple sliders at once.</li>
+        <li class="pb-2 ml-4">Support for displaying the current thumb values using an <span class="text-blue-400">'&lt;output>'</span> element.</li>
+        <li class="pb-2 ml-4">Pressing on the track moves the nearest thumb to that position.</li>
+        <li class="pb-2 ml-4">Supports using the arrow keys, as well as page up/down, home, and end keys.</li>
+        <li class="pb-2 ml-4">Prevents text selection while dragging.</li>
+        <li class="pb-2 ml-4">Support for mirroring in RTL locales.</li>
+      </ul>
+      
+    </div>
+  </div>
+  <script src="slider.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
